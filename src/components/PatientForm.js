@@ -18,7 +18,7 @@ const PatientForm = () => {
     name: "",
     phone: "",
     age: "",
-    gender: null,
+    gender: "",
     disease: "",
     doseStartDate: "",
     doseEndDate: "",
