@@ -47,40 +47,37 @@ const PatientForm = () => {
       boxShadow="md"
     >
       <form onSubmit={handleSubmit}>
-        <FormControl mb="4">
+        <FormControl mb="4" isRequired>
           <FormLabel>Full Name: eg john doe</FormLabel>
           <Input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleInputChange}
-            isRequired
           />
         </FormControl>
 
-        <FormControl mb="4">
+        <FormControl mb="4" isRequired>
           <FormLabel>Phone: eg 712345678</FormLabel>
           <Input
             type="tel"
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
-            isRequired
           />
         </FormControl>
 
-        <FormControl mb="4">
+        <FormControl mb="4" isRequired>
           <FormLabel>Age: eg 18</FormLabel>
           <Input
             type="number"
             name="age"
             value={formData.age}
             onChange={handleInputChange}
-            isRequired
           />
         </FormControl>
 
-        <FormControl mb="4">
+        <FormControl mb="4" isRequired>
           <FormLabel>Gender:</FormLabel>
           <RadioGroup
             name="gender"
@@ -94,48 +91,44 @@ const PatientForm = () => {
           </RadioGroup>
         </FormControl>
 
-        <FormControl mb="4">
+        <FormControl mb="4" isRequired>
           <FormLabel>Disease: eg Malaria</FormLabel>
           <Input
             type="text"
             name="disease"
             value={formData.disease}
             onChange={handleInputChange}
-            isRequired
           />
         </FormControl>
 
         <HStack mb="4">
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel>Dose Start Date:</FormLabel>
             <Input
               type="datetime-local"
               name="doseStartDate"
               value={formData.doseStartDate}
               onChange={handleInputChange}
-              isRequired
             />
           </FormControl>
 
-          <FormControl>
+          <FormControl isRequired>
             <FormLabel>Dose End Date:</FormLabel>
             <Input
               type="datetime-local"
               name="doseEndDate"
               value={formData.doseEndDate}
               onChange={handleInputChange}
-              isRequired
             />
           </FormControl>
         </HStack>
 
-        <FormControl mb="4">
+        <FormControl mb="4" isRequired>
           <FormLabel>Choose Doctor:</FormLabel>
           <Select
             name="selectedDoctor"
             value={formData.selectedDoctor}
             onChange={handleInputChange}
-            isRequired
           >
             {["Kevin", "Ray", "Vinn", "Mil", "jay"].map((doctor) => (
               <option key={doctor} value={doctor}>
