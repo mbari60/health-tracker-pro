@@ -5,9 +5,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Radio,
-  RadioGroup,
-  Stack,
   Select,
   Button,
   HStack,
@@ -54,6 +51,7 @@ const PatientForm = () => {
             name="name"
             value={formData.name}
             onChange={handleInputChange}
+            placeholder="john Doe"
           />
         </FormControl>
 
@@ -62,6 +60,7 @@ const PatientForm = () => {
           <Input
             type="tel"
             name="phone"
+            placeholder="712345678"
             value={formData.phone}
             onChange={handleInputChange}
           />
@@ -71,7 +70,9 @@ const PatientForm = () => {
           <FormLabel>Age: eg 18</FormLabel>
           <Input
             type="number"
+            min={1}
             name="age"
+            placeholder="18"
             value={formData.age}
             onChange={handleInputChange}
           />
@@ -79,23 +80,24 @@ const PatientForm = () => {
 
         <FormControl mb="4" isRequired>
           <FormLabel>Gender:</FormLabel>
-          <RadioGroup
+          <Select
             name="gender"
-            defaultValue={formData.gender}
+            value={formData.gender}
             onChange={handleInputChange}
           >
-            <Stack direction="row">
-              <Radio value="male">Male</Radio>
-              <Radio value="female">Female</Radio>
-            </Stack>
-          </RadioGroup>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="bisexual">Bi-sexual</option>
+          </Select>
         </FormControl>
+        <br />
 
         <FormControl mb="4" isRequired>
           <FormLabel>Disease: eg Malaria</FormLabel>
           <Input
             type="text"
             name="disease"
+            placeholder="Malaria"
             value={formData.disease}
             onChange={handleInputChange}
           />
@@ -138,7 +140,7 @@ const PatientForm = () => {
           </Select>
         </FormControl>
 
-        <Button color="teal" type="submit">
+        <Button colorScheme="teal" type="submit">
           Submit
         </Button>
       </form>

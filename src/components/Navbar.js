@@ -18,9 +18,12 @@ const Navbar = () => {
       <Flex margin="auto">
         <Link to="/">Home</Link>
         <Box mx="4">
-          <Link to="/PatientForm">Patient-Form</Link>
+          <Link to="/DailyTrack">Daily-Track</Link>
         </Box>
-        <Link to="/">Patients-List</Link>
+        <Link to="/PatientForm">Patient-Form</Link>
+        <Box mx="4">
+          <Link >Patient-list</Link>
+        </Box>
       </Flex>
     </Flex>
   );
