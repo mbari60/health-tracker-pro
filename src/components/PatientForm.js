@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { BASE_URL } from "../hostingurl/url";
 import {
   Box,
   FormControl,
@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 
 const PatientForm = () => {
-  const [formData, setFormData] = useState({
+ const data = {
     name: "",
     phone: "",
     age: "",
@@ -20,7 +20,8 @@ const PatientForm = () => {
     doseStartDate: "",
     doseEndDate: "",
     selectedDoctor: "",
-  });
+  }
+  const [formData, setFormData] = useState(data);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -28,11 +29,35 @@ const PatientForm = () => {
       [e.target.name]: e.target.value,
     });
   };
+ const [isLoading,setisLoading]= useState(false)
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  };
+   e.preventDefault();
+   setisLoading(true);
+
+   fetch(`${BASE_URL}/patientform`, {
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json",
+     },
+     body: JSON.stringify(formData),
+   })
+     .then((res) => res.json())
+     .then(() => {
+       // Adding a timeout of 3 seconds before resetting the form and stopping loading
+       setTimeout(() => {
+         // reset form
+         setFormData(data);
+
+         // stop loading
+         setisLoading(false);
+       }, 3000);
+     })
+     .catch((err) => {
+       setisLoading(false);
+       console.log("There was an error posting data", err);
+     });
+ };
 
   return (
     <Box
@@ -140,7 +165,12 @@ const PatientForm = () => {
           </Select>
         </FormControl>
 
-        <Button colorScheme="teal" type="submit">
+        <Button
+          colorScheme="teal"
+          type="submit"
+          isLoading={isLoading}
+          loadingText="Submitting ..... "
+        >
           Submit
         </Button>
       </form>

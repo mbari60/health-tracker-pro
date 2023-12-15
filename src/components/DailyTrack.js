@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BASE_URL } from "../hostingurl/url";
 import {
   Box,
   Heading,
@@ -45,7 +46,7 @@ const [isLoading , setisLoading] = useState(false)
    e.preventDefault();
    setisLoading(true);
 
-   fetch(`where to submit-url`, {
+   fetch(`${BASE_URL}/dailytracks`, {
      method: "POST",
      headers: {
        "Content-Type": "application/json",

@@ -22,7 +22,7 @@ const Navbar = () => {
         </Box>
         <Link to="/PatientForm">Patient-Form</Link>
         <Box mx="4">
-          <Link >Patient-list</Link>
+          <Link to="/Lists">View-list</Link>
         </Box>
       </Flex>
     </Flex>
